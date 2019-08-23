@@ -41,3 +41,9 @@ Flags:                 fpu vme de pse tsc msr pae mc
 ## Remove cpus from kernel scheduler
 
 Use the `isolcpu` command to dedicate just two CPUs to the kernel. The remaining can be used for userspace trading processes.
+
+https://www.linuxtopia.org/online_books/linux_kernel/kernel_configuration/re46.html
+
+## Resources
+
+https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
