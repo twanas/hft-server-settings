@@ -44,6 +44,13 @@ Use the `isolcpu` command to dedicate just two CPUs to the kernel. The remaining
 
 https://www.linuxtopia.org/online_books/linux_kernel/kernel_configuration/re46.html
 
+```
+vi /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash isolcpus=0-3"
+
+...
+sudo update-grub
+```
 ## Resources
 
 https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
