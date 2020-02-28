@@ -61,12 +61,15 @@ netstat -i –udp eth0
 ```
 
 Example output is:
-```
-Iface 	MTU 	Met 	RX-OK 	RX-ERR 	RX-DRP 	RX-OVR 	TX-OK 	TX-ERR 	TX-DRP 	TX-OVR 	Flg
-eth0   1500 	 0 	  109208 	  0 	    3 	     0   	82809 	   0     	0      	0    	BMRU
-```
 
-Where RX-DRP 
+|Iface |	MTU |	Met |	 RX-OK  |	RX-ERR |	RX-DRP |	RX-OVR |	TX-OK | TX-ERR  |	TX-DRP |	TX-OVR |	Flg  |
+|------|------|-----|---------|--------|---------|---------|--------|---------|--------|---------|-------|
+|eth0  | 1500 |	 0 	|  109208 |	  0 	 |    3 	 |     0   | 	82809 |   0     |	   0   |   	0    |	BMRU |
+
+Where RX-DRP = 3 indicates the adapter has dropped three packets.
+
+To alleviate the packet overflow, the network adapter card buffer should be increased.
+
 
 Monitor the datagrams, In/Out & Errors at kernel level:
 
