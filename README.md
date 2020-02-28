@@ -110,6 +110,14 @@ Check the new settings by running
 
 To make these changes permanent edit or create the `/etc/sysctl.conf` file and add the changes there.
 
+```
+# /etc/sysctl.conf
+net.core.rmem_max=67108864
+net.core.rmem_default=67108864
+net.ipv4.udp_mem="262144 327680 393216"
+net.core.netdev_max_backlog=2000
+```
+
 ## Resources
 
 - https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
