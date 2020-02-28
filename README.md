@@ -118,6 +118,12 @@ net.ipv4.udp_mem="262144 327680 393216"
 net.core.netdev_max_backlog=2000
 ```
 
+To reload the new settings
+
+```
+sudo sysctl -p
+```
+
 ## Resources
 
 - https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
