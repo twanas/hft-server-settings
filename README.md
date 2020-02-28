@@ -108,7 +108,7 @@ Check the new settings by running
 
 ```sysctl -A | grep net | grep 'mem\|backlog' | grep 'udp_mem\|rmem_max\|max_backlog'```
 
-To make these changes permanent edit or create the /etc/sysctl.conf file and add the changes there.
+To make these changes permanent edit or create the `/etc/sysctl.conf` file and add the changes there.
 
 ## Resources
 
