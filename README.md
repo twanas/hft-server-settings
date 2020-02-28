@@ -51,6 +51,37 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash isolcpus=0-3"
 ...
 sudo update-grub
 ```
+
+## Network Ring Buffer Size
+
+To detect a network buffer overflow at the `adapter/NIC` level, one can call:
+
+```
+netstat -i –udp eth0
+```
+
+Example output is:
+```
+Iface 	MTU 	Met 	RX-OK 	RX-ERR 	RX-DRP 	RX-OVR 	TX-OK 	TX-ERR 	TX-DRP 	TX-OVR 	Flg
+eth0   1500 	 0 	  109208 	  0 	    3 	     0   	82809 	   0     	0      	0    	BMRU
+```
+
+Where RX-DRP 
+
+Monitor the datagrams, In/Out & Errors at kernel level:
+
+```
+watch -d "cat /proc/net/snmp | grep -w Udp"
+```
+
+Check the kernel socket ring buffer sizes:
+
+```
+sysctl -a | grep  net.core.rmem
+```
+
 ## Resources
 
-https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
+- https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
+
+- https://ref.onixs.biz/lost-multicast-packets-troubleshooting.html
