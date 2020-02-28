@@ -70,7 +70,6 @@ Where RX-DRP = 3 indicates the adapter has dropped three packets.
 
 To alleviate the packet overflow, the network adapter card buffer should be increased.
 
-
 ### Monitor the datagrams, In/Out & Errors at kernel level:
 
 ```
@@ -83,13 +82,33 @@ Sample output:
 |-----|------------ |---------|----------|--------------|--------------|--------------|--------------|
 |Udp: | 7273530     | 48      | 735586   | 3312         | 735586       | 0            |0             |
 
+The items `InErrors` and `RcvbufErrors` indicate an overflow at the `kernel` socket level. 
 
-
-Check the kernel socket ring buffer sizes:
+To check the kernel socket receive buffer sizes:
 
 ```
 sysctl -a | grep  net.core.rmem
 ```
+
+Increase the maximum socket receive buffer size to 64 MB:
+```
+sysctl -w net.core.rmem_max=67108864
+```
+Increase the maximum total buffer-space allocatable. This is measured in units of pages (4096 bytes):
+```
+sysctl -w net.ipv4.udp_mem="262144 327680 393216"
+```
+Note that net.ipv4.udp_mem works in pages, so to calculate the size in bytes multiply values by PAGE_SIZE, where PAGE_SIZE = 4096 (4K). Then the max udp_mem size in bytes is 385152 * 4096 = 1,577,582,592.
+
+Increase the queue size for incoming packets:
+```
+sysctl -w net.core.netdev_max_backlog=2000
+```
+Check the new settings by running 
+
+```sysctl -A | grep net | grep 'mem\|backlog' | grep 'udp_mem\|rmem_max\|max_backlog'```
+
+To make these changes permanent edit or create the /etc/sysctl.conf file and add the changes there.
 
 ## Resources
 
