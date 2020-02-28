@@ -54,7 +54,7 @@ sudo update-grub
 
 ## Network Ring Buffer Size
 
-To detect a network buffer overflow at the `adapter/NIC` level, one can call:
+### Detect a network buffer overflow at the `adapter/NIC` level, one can call:
 
 ```
 netstat -i –udp eth0
@@ -71,11 +71,19 @@ Where RX-DRP = 3 indicates the adapter has dropped three packets.
 To alleviate the packet overflow, the network adapter card buffer should be increased.
 
 
-Monitor the datagrams, In/Out & Errors at kernel level:
+### Monitor the datagrams, In/Out & Errors at kernel level:
 
 ```
 watch -d "cat /proc/net/snmp | grep -w Udp"
 ```
+
+Sample output:
+
+|Udp: | InDatagrams | NoPorts | InErrors | OutDatagrams | RcvbufErrors | SndbufErrors |InCsumErrors  |
+|-----|------------ |---------|----------|--------------|--------------|--------------|--------------|
+|Udp: | 7273530     | 48      | 735586   | 3312         | 735586       | 0            |0             |
+
+
 
 Check the kernel socket ring buffer sizes:
 
