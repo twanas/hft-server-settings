@@ -132,4 +132,4 @@ sudo sysctl -p
 
 - https://chatwithtraders.com/ep-197-haim-ben-ami/
 
-- https://www.youtube.com/watch?v=z5AAA3_iBTU
+- https://www.youtube.com/watch?v=z5AAA3_iBTU (DevOps Amsterdam Meetup 2018 at Optiver - Low-latency Linux)
