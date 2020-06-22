@@ -129,3 +129,7 @@ sudo sysctl -p
 - https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
 
 - https://ref.onixs.biz/lost-multicast-packets-troubleshooting.html
+
+- https://chatwithtraders.com/ep-197-haim-ben-ami/
+
+- https://www.youtube.com/watch?v=z5AAA3_iBTU
