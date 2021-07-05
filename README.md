@@ -52,6 +52,14 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash isolcpus=0-3"
 sudo update-grub
 ```
 
+Verify with :
+
+```
+$ cat /sys/devices/system/cpu/isolated
+12-23
+
+```
+
 ## Network Ring Buffer Size
 
 ### Detect a network buffer overflow at the `adapter/NIC` level, one can call:
