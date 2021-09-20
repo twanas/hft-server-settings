@@ -132,6 +132,20 @@ To reload the new settings
 sudo sysctl -p
 ```
 
+## Running Isolated Processes
+
+### numa
+
+In addition to pinning hft application thread(s) to isolated cores, it is important that the memory accessed by these threads is in the _correct_ memory region.
+
+For example, a numa architecture with 2 sockets will have 2 separate DRAM regions. Each socket a preferred memory region which is in closer proximity. Accessing the wrong region can have very drastic effects on the process performance, and this not managed automatically by the linux kernel.
+
+To ensure that your application allocates from the _correct_ memory region, it should be started with numactl: 
+
+```
+numactl --cpunodebind=0 --membind=0 <application>
+```
+
 ## Resources
 
 - https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf
@@ -141,3 +155,5 @@ sudo sysctl -p
 - https://chatwithtraders.com/ep-197-haim-ben-ami/
 
 - https://www.youtube.com/watch?v=z5AAA3_iBTU (DevOps Amsterdam Meetup 2018 at Optiver - Low-latency Linux)
+
+- https://www.glennklockwood.com/hpc-howtos/process-affinity.html (Process affinity)
